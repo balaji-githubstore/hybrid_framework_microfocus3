@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Orange HRM Suite" parallel="tests">
+
+
+    <test verbose="2" preserve-order="true" name="Login UI Test - Edge">
+        <parameter name="browser" value="edge"></parameter>
+        <classes>
+            <class name="com.microfocus.test.LoginUITest">
+                <methods>
+                    <include name="validateTitleTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="Login UI Test - Chrome">
+        <parameter name="browser" value="ch"></parameter>
+        <classes>
+            <class name="com.microfocus.test.LoginUITest">
+                <methods>
+                    <include name="validateTitleTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

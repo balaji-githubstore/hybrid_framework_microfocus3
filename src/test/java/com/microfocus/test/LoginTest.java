@@ -29,7 +29,7 @@ public class LoginTest extends WebDriverWrapper {
         Assert.assertEquals(actualError, expectedError);
     }
 
-    @Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider")
+    @Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider",groups = {"smoke","high"})
     public void validLoginTest(String username,String password,String expectedHeader) {
         driver.findElement(By.name("username")).sendKeys(username);
         driver.findElement(By.name("password")).sendKeys(password);

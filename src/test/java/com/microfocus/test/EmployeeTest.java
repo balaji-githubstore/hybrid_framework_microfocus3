@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class EmployeeTest extends WebDriverWrapper {
 
-    @Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider")
+    @Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider",groups = {"smoke","high"})
     public void addEmployeeTest(String username,String password,String firstname,String middlename,String lastname,String expectedProfileName)
     {
         driver.findElement(By.name("username")).sendKeys(username);

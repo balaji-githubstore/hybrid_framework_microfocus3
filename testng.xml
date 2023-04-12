@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Orange HRM Suite" >
+
+    <parameter name="browser" value="edge"></parameter>
+    <test verbose="2" preserve-order="true" name="Login UI Test - Edge">
+        <classes>
+            <class name="com.microfocus.test.LoginUITest">
+                <methods>
+                    <include name="validate.*"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+</suite>
