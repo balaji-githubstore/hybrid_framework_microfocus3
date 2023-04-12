@@ -13,7 +13,6 @@ public class DataUtils {
     @DataProvider
     public Object[][] invalidLoginData() {
         Object[][] arr = new Object[2][3];
-
         arr[0][0] = "peter";
         arr[0][1] = "admin123";
         arr[0][2] = "Invalid credentials";
