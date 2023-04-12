@@ -15,13 +15,13 @@ import java.time.Duration;
  * This Test class contains Login Page UI related test methods
  */
 public class LoginUITest extends WebDriverWrapper {
-    @Test
+    @Test(priority = 1)
     public void validateTitleTest() {
         String actualTitle = driver.getTitle();
         Assert.assertEquals(actualTitle, "OrangeHRM");
     }
 
-    @Test
+    @Test(priority = 2)
     public void validatePlaceholderTest() {
         String userPlaceholder = driver.findElement(By.name("username")).getAttribute("placeholder");
         String passPlaceholder = driver.findElement(By.name("password")).getAttribute("placeholder");
