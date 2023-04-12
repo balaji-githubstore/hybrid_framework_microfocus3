@@ -1,6 +1,7 @@
 package com.microfocus.test;
 
 import com.microfocus.base.WebDriverWrapper;
+import com.microfocus.utils.DataUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,26 +18,7 @@ import java.time.Duration;
  */
 public class LoginTest extends WebDriverWrapper {
 
-    //Create a dataprovider and connect to @Test invalidLoginTest
-    //peter,admin123,Invalid credentials
-    //john,admin123,Invalid credentials
-
-    @DataProvider
-    public Object[][] invalidLoginData()
-    {
-        Object[][] arr=new Object[2][3];
-
-        arr[0][0]="peter";
-        arr[0][1]="admin123";
-        arr[0][2]="Invalid credentials";
-
-        arr[1][0]="john";
-        arr[1][1]="john123";
-        arr[1][2]="Invalid credentials";
-
-        return arr;
-    }
-    @Test(dataProvider = "invalidLoginData")
+    @Test(dataProviderClass = DataUtils.class,dataProvider = "invalidLoginData")
     public void invalidLoginTest(String username,String password,String expectedError) {
         driver.findElement(By.name("username")).sendKeys(username);
         driver.findElement(By.name("password")).sendKeys(password);
