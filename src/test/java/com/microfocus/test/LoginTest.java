@@ -19,7 +19,7 @@ import java.time.Duration;
  */
 public class LoginTest extends WebDriverWrapper {
 
-    @Test(dataProviderClass = DataUtils.class,dataProvider = "invalidLoginData")
+    @Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider")
     public void invalidLoginTest(String username,String password,String expectedError) {
         driver.findElement(By.name("username")).sendKeys(username);
         driver.findElement(By.name("password")).sendKeys(password);
@@ -29,13 +29,13 @@ public class LoginTest extends WebDriverWrapper {
         Assert.assertEquals(actualError, expectedError);
     }
 
-    @Test
-    public void validLoginTest() {
-        driver.findElement(By.name("username")).sendKeys("Admin");
-        driver.findElement(By.name("password")).sendKeys("admin123");
+    @Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider")
+    public void validLoginTest(String username,String password,String expectedHeader) {
+        driver.findElement(By.name("username")).sendKeys(username);
+        driver.findElement(By.name("password")).sendKeys(password);
         driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
 
         String actualHeader = driver.findElement(By.xpath("//h6[contains(normalize-space(),'Dash')]")).getText();
-        Assert.assertEquals(actualHeader, "Dashboard");
+        Assert.assertEquals(actualHeader, expectedHeader);
     }
 }
