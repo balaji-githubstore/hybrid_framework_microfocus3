@@ -10,6 +10,9 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+/**
+ * This Test class contains Login Page UI related test methods
+ */
 public class LoginUITest {
     WebDriver driver;
 
