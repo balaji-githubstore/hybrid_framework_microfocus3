@@ -5,6 +5,9 @@ import com.microfocus.utils.DataUtils;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
+/**
+ * Code without page object model
+ */
 public class EmployeeTest extends WebDriverWrapper {
 
     @Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider",groups = {"smoke","high"})
