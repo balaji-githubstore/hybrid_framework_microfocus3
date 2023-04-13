@@ -1,6 +1,7 @@
 package com.microfocus.test;
 
 import com.microfocus.base.WebDriverWrapper;
+import com.microfocus.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,11 +24,10 @@ public class LoginUITest extends WebDriverWrapper {
 
     @Test(priority = 2,groups = {"low","UI"})
     public void validatePlaceholderTest() {
-        String userPlaceholder = driver.findElement(By.name("username")).getAttribute("placeholder");
-        String passPlaceholder = driver.findElement(By.name("password")).getAttribute("placeholder");
+        LoginPage loginPage=new LoginPage(driver);
 
-        Assert.assertEquals(userPlaceholder, "Username");
-        Assert.assertEquals(passPlaceholder, "Password");
+        Assert.assertEquals(loginPage.getUsernamePlaceholder(), "Username");
+        Assert.assertEquals(loginPage.getPasswordPlaceholder(), "Password");
     }
 
 }

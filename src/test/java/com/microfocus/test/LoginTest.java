@@ -2,6 +2,8 @@ package com.microfocus.test;
 
 import com.microfocus.base.WebDriverWrapper;
 
+import com.microfocus.pages.DashboardPage;
+import com.microfocus.pages.LoginPage;
 import com.microfocus.utils.DataUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,21 +23,24 @@ public class LoginTest extends WebDriverWrapper {
 
     @Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider")
     public void invalidLoginTest(String username,String password,String expectedError) {
-        driver.findElement(By.name("username")).sendKeys(username);
-        driver.findElement(By.name("password")).sendKeys(password);
-        driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+        LoginPage loginPage=new LoginPage(driver);
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
+        loginPage.clickOnLogin();
 
-        String actualError = driver.findElement(By.xpath("//p[contains(normalize-space(),'Invalid')]")).getText();
+        String actualError = loginPage.getInvalidErrorMessage();
         Assert.assertEquals(actualError, expectedError);
     }
 
     @Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider",groups = {"smoke","high"})
     public void validLoginTest(String username,String password,String expectedHeader) {
-        driver.findElement(By.name("username")).sendKeys(username);
-        driver.findElement(By.name("password")).sendKeys(password);
-        driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+        LoginPage loginPage=new LoginPage(driver);
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
+        loginPage.clickOnLogin();
 
-        String actualHeader = driver.findElement(By.xpath("//h6[contains(normalize-space(),'Dash')]")).getText();
+        DashboardPage dashboardPage=new DashboardPage(driver);
+        String actualHeader = dashboardPage.getHeader();
         Assert.assertEquals(actualHeader, expectedHeader);
     }
 }
