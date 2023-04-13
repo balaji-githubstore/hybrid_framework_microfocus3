@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Orange HRM Suite" >
 
-    <parameter name="browser" value="edge"></parameter>
+    <parameter name="browser" value="ch"></parameter>
     <test verbose="2" preserve-order="true" name="Login UI Test - Edge">
         <classes>
             <class name="com.microfocus.test.LoginUITest">
