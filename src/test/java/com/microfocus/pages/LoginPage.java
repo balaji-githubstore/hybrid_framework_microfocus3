@@ -1,9 +1,10 @@
 package com.microfocus.pages;
 
+import com.microfocus.base.AutomationKeywords;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+public class LoginPage extends AutomationKeywords {
     private WebDriver driver;
 
     private By usernameLocator = By.name("username");
@@ -12,31 +13,36 @@ public class LoginPage {
     private By errorLocator = By.xpath("//p[contains(normalize-space(),'Invalid')]");
 
     public LoginPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
     }
 
 
     public void enterUsername(String username) {
-        driver.findElement(usernameLocator).sendKeys(username);
+//        driver.findElement(usernameLocator).sendKeys(username);
+        typeByLocator(usernameLocator,username);
     }
 
+
     public void enterPassword(String password) {
-        driver.findElement(passwordLocator).sendKeys(password);
+//        driver.findElement(passwordLocator).sendKeys(password);
+        super.typeByLocator(passwordLocator,password);
     }
 
     public void clickOnLogin() {
-        driver.findElement(loginLocator).click();
+//        driver.findElement(loginLocator).click();
+        clickByLocator(loginLocator);
     }
 
     public String getInvalidErrorMessage() {
-        return driver.findElement(errorLocator).getText();
+        return getTextByLocator(errorLocator);
     }
 
     public String getUsernamePlaceholder() {
-        return driver.findElement(usernameLocator).getAttribute("placeholder");
+        return getAttributeByLocator(usernameLocator,"placeholder");
     }
 
     public String getPasswordPlaceholder() {
-        return driver.findElement(passwordLocator).getAttribute("placeholder");
+        return getAttributeByLocator(passwordLocator,"placeholder");
     }
 }
