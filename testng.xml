@@ -7,7 +7,7 @@
         <classes>
             <class name="com.microfocus.test.LoginUITest">
                 <methods>
-                    <include name="validate.*"/>
+                    <include name="validateTitle.*"/>
                 </methods>
             </class>
         </classes>
